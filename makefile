@@ -4,6 +4,6 @@ src=src/
 header = header/
 opt=$(lib) -I $(header) -g
 
-fall: src/fall.c
-	$(CC) $(src)fall.c $(opt) -o fall
+free_fall: src/free_fall.c
+	$(CC) $(src)free_fall.c $(opt) -o fall
 
