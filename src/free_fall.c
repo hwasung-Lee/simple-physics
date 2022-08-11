@@ -3,7 +3,7 @@
 #include <string.h>
 #include <curses.h>
 #include <time.h>
-#include <fall.h>
+#include <free_fall.h>
 #include <sys/time.h>
 
 int main(int argc, char *argv[])
