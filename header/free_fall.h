@@ -5,7 +5,7 @@ double calc_len(double v0, double g, double t)
 {
 	double len = 0;
 	double v=v0 + g*t;
-	len = (v+v0)*t;
+	len = (v+v0)*t/2;
 	return len;
 }
 void draw_graph(double v0, double g, double t);
