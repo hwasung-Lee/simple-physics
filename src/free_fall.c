@@ -3,6 +3,10 @@
 #include <string.h>
 #include <curses.h>
 #include <time.h>
+<<<<<<< HEAD
+=======
+#include <free_fall.h>
+>>>>>>> cdb0b8c4e1099b2ce047a44a4da5a04488902df8
 #include <sys/time.h>
 
 #include "free_fall.h"
