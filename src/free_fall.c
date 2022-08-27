@@ -3,8 +3,9 @@
 #include <string.h>
 #include <curses.h>
 #include <time.h>
-#include <fall.h>
 #include <sys/time.h>
+
+#include "free_fall.h"
 
 int main(int argc, char *argv[])
 {
