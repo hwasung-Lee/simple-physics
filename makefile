@@ -1,5 +1,5 @@
 CC=gcc
-lib=-lncurses
+lib=-lncursesw
 src=src/
 header = header/
 opt=$(lib) -I $(header) -g
@@ -13,3 +13,5 @@ free_fall: src/free_fall.c header/free_fall.h
 leverage: src/leverage.c header/leverage.h
 	$(CC) $(src)leverage.c $(opt) -o $@ 
 
+clean:
+	rm $(all_target)

@@ -12,7 +12,7 @@ void torque_help()
 	wchar_t *F_v=
 {L"     /|\n    / |\n F /  |\n  /   |Fsin𝜃\n /\\ 𝜃 |\n/__\\__|\n"};
 	setlocale(LC_ALL, "");
-	puts("1. define of torque (source : en_Wikipedia");
+	puts("1. define of torque (source : en_Wikipedia)");
 	puts("torque : \"the rotational equivalent of liner force.it is also called as the moment, moment of force, rotaional of force or turning effect\"");
 	printf("%ls\n", L"𝛕 means torque. and 𝛕(vector) equals to r X F");
 	puts("note : X means cross product");
