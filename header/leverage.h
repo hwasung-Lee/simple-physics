@@ -22,5 +22,20 @@ void torque_help()
 	
 }
 
+void draw_box(int y, int x)
+{
+
+}
+
+void moveL_pivot()
+{
+
+}
+
+void moveR_pivot()
+{
+
+}
+
 #endif
 

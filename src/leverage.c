@@ -6,6 +6,9 @@
 
 #include "leverage.h"
 
+#define left_arrow 260
+#define right_arrow 261
+
 int main(int argc, char** argv)
 {
 	setlocale(LC_ALL, "");
@@ -15,6 +18,7 @@ int main(int argc, char** argv)
 	puts("2. what is torque?");
 	printf("others. quit\n > ");
 	scanf("%d",&s);
+
 	switch(s)
 	{
 		case 1://continue
@@ -22,10 +26,11 @@ int main(int argc, char** argv)
 		case 2://print what is torque and exit
 			torque_help();//declared in leverage.h
 			exit(0);
-		       break;
+		        break;
 		default://others
-		       exit(0);
+			exit(0);
 	}
+
 	int lever;//lever : length of lever
 	int pivot;//pivot : location of pivot point
 	int size_x, size_y; //terminal size
@@ -33,10 +38,8 @@ int main(int argc, char** argv)
 	printf("length of lever(integer)\n > ");
 	scanf("%d", &lever);
 
-	printf("x-coordinate of pivot point\n > ");
-	scanf("%d", &pivot);
-
 	WINDOW *exp =  initscr();
+	keypad(exp, 1);
 	noecho(); //disable echo what you type
 	getmaxyx(exp, size_y, size_x);//get terminal size
 	move(size_y/2,size_x/2-lever/2);
@@ -47,7 +50,20 @@ int main(int argc, char** argv)
 	move(size_y/2+1,size_x/2);
 
 	printw("%ls",L"Δ");//delta is pivot
-	scanw("");
+	draw_box(size_y/2+1,size_x/2-lever/2);
+
+	int i;
+	while(i=getch())
+	{
+		if(i==left_arrow)//if user typed left arrow key
+		{
+			moveL_pivot();
+		}
+		if(i==right_arrow)//if user typed right arrow key
+		{
+			moveR_pivot();
+		}	
+	}
 	
 	endwin();
 }	
