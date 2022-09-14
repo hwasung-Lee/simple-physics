@@ -14,5 +14,6 @@ void usage()
 	puts("usage");
 	puts("fall [option]");
 	puts("option");
-	puts("-g [num] : set gravitational acceleration as [num](default : 10)");
+	puts("-g [num] : set gravitational acceleration as [num] (default : 10)");
+	puts("-h : show help");
 }

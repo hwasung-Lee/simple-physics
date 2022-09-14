@@ -22,6 +22,11 @@ int main(int argc, char *argv[])
 			}
 			g=atof(argv[2]);
 		}
+		else if(strcmp(argv[1],"-h")==0)
+		{
+			usage();
+			return 0;
+		}
 		else
 		{
 			printf("%s is not defined arugment\n",argv[1]);
