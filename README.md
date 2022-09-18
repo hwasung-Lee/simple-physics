@@ -20,6 +20,8 @@ make free_fall
 ### How to use
 ```
 usage : ./free_fall [option]
-option: -g [num] : set gravital acceleration as [num] (default : 10)
+options:
+-g [num] : set gravital acceleration as [num] (default : 10)
+-h : show help
 ```
 ## leverage (developing)
