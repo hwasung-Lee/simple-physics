@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <wchar.h>
 #include <locale.h>
+
 void torque_help()
 {
 	wchar_t *F_v=
@@ -22,10 +23,6 @@ void torque_help()
 	
 }
 
-void draw_box(int y, int x)
-{
-
-}
 
 void moveL_pivot()
 {

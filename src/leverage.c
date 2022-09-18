@@ -5,6 +5,7 @@
 #include <locale.h>
 
 #include "leverage.h"
+#include "shapes.h"
 
 #define left_arrow 260
 #define right_arrow 261
@@ -43,14 +44,13 @@ int main(int argc, char** argv)
 	noecho(); //disable echo what you type
 	getmaxyx(exp, size_y, size_x);//get terminal size
 	move(size_y/2,size_x/2-lever/2);
-
-	for(int i=0;i<lever;i++)
-		printw("_");//draw lever
+	
+	draw_line(lever);
 
 	move(size_y/2+1,size_x/2);
 
 	printw("%ls",L"Δ");//delta is pivot
-	draw_box(size_y/2+1,size_x/2-lever/2);
+	draw_box(size_y/2+1,size_x/2-lever/2, 2);
 
 	int i;
 	while(i=getch())
