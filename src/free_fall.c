@@ -51,6 +51,6 @@ int main(int argc, char *argv[])
 	double t=(double)(end_time.tv_sec-start_time.tv_sec) + micro*(double)(end_time.tv_usec-start_time.tv_usec);
 	endwin();
 	double len=calc_len(0, g, t);
-	printf("%lfm\n",len);	
+	printf("%lfsec\n%lfm\n",t,len);	
 	return 0;
 }
