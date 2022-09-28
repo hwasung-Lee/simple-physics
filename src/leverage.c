@@ -42,6 +42,7 @@ int main(int argc, char** argv)
 			exit(0);
 		}
 	}
+
 	setlocale(LC_ALL, "");
 
 	puts("1. leverage experiment");
@@ -96,7 +97,7 @@ int main(int argc, char** argv)
 	move(0,size_x/2-7);
 	printw("sum of torque");
 	move(1,size_x/2);
-	printw("%.3f(N·m)",torque);
+	printw("%.3fN·m",torque);
 	move(2,0);
 	printw("%ls=%d",L"|Δpivot's position|",abs(pivot-size_x/2));
 

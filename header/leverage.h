@@ -55,7 +55,7 @@ void refresh_stat(int size_x, int pivot, double torque)
 		printw("%.3f",torque);
 	else
 		printw("%.3f",-1*torque);
-	printw("(N·m)");
+	printw("N·m");
 	move(2,0);
 	printw("%ls=%d",L"|Δpivot's position|",abs(pivot-size_x/2));
 }
