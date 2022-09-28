@@ -89,6 +89,25 @@ int main(int argc, char** argv)
 			move_pivot(size_x, size_y, lever, pivot);
 			calc_torque(size_x, lever, pivot, &torque);
 			refresh_stat(size_x, pivot, torque);
+			if(torque>0)
+			{
+				move(size_y/2-5,size_x/2-2);
+				printw(" ");
+				move(size_y/2-5,size_x/2+2);
+				printw("%ls",L"↓");
+			}
+			else if(torque < 0)
+			{
+				move(size_y/2-5,size_x/2+2);
+				printw(" ");
+				move(size_y/2-5,size_x/2-2);
+				printw("%ls",L"↓");
+			}
+			else
+			{
+				move(size_y/2-5,size_x/2-2);
+				printw("     ");
+			}
 		}	
 	}
 	
