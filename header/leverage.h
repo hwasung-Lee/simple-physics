@@ -8,6 +8,16 @@
 #include <wchar.h>
 #include <locale.h>
 
+void usage()
+{
+	puts("usage :");
+	puts("--------------------------------------");
+	puts("| ./leverage [options]               |");
+	puts("| options : -h : show usage          |");
+	puts("|           -w [weight] : set weight |");
+	puts("--------------------------------------");
+}
+
 void torque_help()
 {
 	wchar_t *F_v=
@@ -45,6 +55,7 @@ void refresh_stat(int size_x, int pivot, double torque)
 		printw("%.3f",torque);
 	else
 		printw("%.3f",-1*torque);
+	printw("(N·m)");
 	move(2,0);
 	printw("%ls=%d",L"|Δpivot's position|",abs(pivot-size_x/2));
 }

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <curses.h>
 #include <wchar.h>
 #include <locale.h>
@@ -12,9 +13,37 @@
 
 int main(int argc, char** argv)
 {
+	double weight=1;
+	int s;
+
+	if(argc>=2)
+	{
+		if(strcmp(argv[1],"-w")==0)
+		{
+			if(argc != 3)
+			{
+				usage();
+				exit(1);
+			}
+			else
+			{
+				weight = atof(argv[2]);	
+				if(weight <= 0)
+				{
+					usage();
+					exit(1);
+				}
+			}
+
+		}
+		else if(strcmp(argv[1], "-h")==0)
+		{
+			usage();
+			exit(0);
+		}
+	}
 	setlocale(LC_ALL, "");
 
-	int s;
 	puts("1. leverage experiment");
 	puts("2. what is torque?");
 	printf("others. quit\n > ");
@@ -67,7 +96,7 @@ int main(int argc, char** argv)
 	move(0,size_x/2-7);
 	printw("sum of torque");
 	move(1,size_x/2);
-	printw("%.3f",torque);
+	printw("%.3f(N·m)",torque);
 	move(2,0);
 	printw("%ls=%d",L"|Δpivot's position|",abs(pivot-size_x/2));
 
@@ -88,7 +117,7 @@ int main(int argc, char** argv)
 			}
 			move_pivot(size_x, size_y, lever, pivot);
 			calc_torque(size_x, lever, pivot, &torque);
-			refresh_stat(size_x, pivot, torque);
+			refresh_stat(size_x, pivot, torque*weight);
 			if(torque>0)
 			{
 				move(size_y/2-5,size_x/2-2);
@@ -108,8 +137,9 @@ int main(int argc, char** argv)
 				move(size_y/2-5,size_x/2-2);
 				printw("     ");
 			}
-		}	
+		}
+		else if(i=='q')
+			break;	
 	}
-	
 	endwin();
 }	
