@@ -27,7 +27,7 @@ int main(int argc, char** argv)
 			}
 			else
 			{
-				weight = atof(argv[2]);	
+				weight = atof(argv[2]);
 				if(weight <= 0)
 				{
 					usage();
@@ -66,21 +66,29 @@ int main(int argc, char** argv)
 	int pivot;//pivot : location of pivot point
 	int size_x, size_y; //terminal size
 	double torque = 0; //sum of torque
-	
-	do // get length of lever
-	{	
-		printf("length of lever(integer,odd, over 5)\n > ");
-		scanf("%d", &lever);
-	}while(lever<=5 || lever%2==0);
-	
 
 	WINDOW *exp =  initscr();
+
+	getmaxyx(exp, size_y, size_x);//get terminal size
+	endwin();
+
+	do// get length of lever
+	{
+		printf("length of lever(integer,odd, over 5)\n > ");
+		scanf("%d", &lever);
+		if(lever > size_x)
+            puts("it's too big");
+	}while(lever<=5 || lever%2==0 || lever>size_x);
+
+	exp=initscr();
 	keypad(exp, 1);
 	noecho(); //disable echo what you type
-	getmaxyx(exp, size_y, size_x);//get terminal size
 	move(size_y/2,size_x/2-lever/2);
-	
+
 	draw_line(lever);
+
+	move(size_y/2, size_x/2);
+	printw("-");
 
 	pivot=size_x/2;
 	move(size_y/2+1,pivot);//move pivot's position
@@ -93,7 +101,7 @@ int main(int argc, char** argv)
 		draw_box(size_y/2-1,size_x/2+lever/2-2, 2);
 	else
 		draw_box(size_y/2-1,size_x/2+lever/2-1, 2);
-	
+
 	move(0,size_x/2-7);
 	printw("sum of torque");
 	move(1,size_x/2);
@@ -110,11 +118,13 @@ int main(int argc, char** argv)
 			printw(" ");
 			if(i==left_arrow)//if user typed left arrow key
 			{
-				pivot-=1;
+			    if(pivot>size_x/2-lever/2)
+                    pivot-=1;
 			}
 			else //if user typed right arrow key
 			{
-				pivot+=1;
+			    if(pivot<size_x/2+lever/2)
+                    pivot+=1;
 			}
 			move_pivot(size_x, size_y, lever, pivot);
 			calc_torque(size_x, lever, pivot, &torque);
@@ -122,14 +132,14 @@ int main(int argc, char** argv)
 			if(torque>0)
 			{
 				move(size_y/2-5,size_x/2-2);
-				printw(" ");
+				clrtoeol();
 				move(size_y/2-5,size_x/2+2);
 				printw("%ls",L"↓");
 			}
 			else if(torque < 0)
 			{
 				move(size_y/2-5,size_x/2+2);
-				printw(" ");
+				clrtoeol();
 				move(size_y/2-5,size_x/2-2);
 				printw("%ls",L"↓");
 			}
@@ -140,7 +150,7 @@ int main(int argc, char** argv)
 			}
 		}
 		else if(i=='q')
-			break;	
+			break;
 	}
 	endwin();
-}	
+}
