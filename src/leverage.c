@@ -146,7 +146,7 @@ int main(int argc, char** argv)
 			else
 			{
 				move(size_y/2-5,size_x/2-2);
-				printw("     ");
+				clrtoeol();
 			}
 		}
 		else if(i=='q')
